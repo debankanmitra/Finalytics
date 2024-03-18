@@ -55,34 +55,34 @@ const people = [
 
 function List() {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 lg:pt-32">
+    <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-8 lg:pt-32">
       <header className="flex h-16 flex-none items-center border-t px-4">
-        <h1 className="ax-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">Market Status</h1>
+        <h1 className="ax-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">Trending Coins</h1>
       </header>
       <header className="flex flex-none items-center px-4">
         <a
-          href="#"
+          href="/"
           className="mb-2 mr-1 inline-block rounded-full px-2 py-1 text-xs font-bold text-blue-700 md:mr-2 md:px-4"
         >
           {' '}
           Hot{' '}
         </a>
         <a
-          href="#"
+          href="/"
           className="mb-2 mr-1 inline-block rounded-full px-2 py-1 text-xs text-black md:mr-2 md:px-4"
         >
           {' '}
           Upside{' '}
         </a>
         <a
-          href="#"
+          href="/"
           className="mb-2 mr-1 inline-block rounded-full px-2 py-1 text-xs text-black md:mr-2 md:px-4"
         >
           {' '}
           Downside{' '}
         </a>
       </header>
-      <ul role="list" className="flex flex-col p-4">
+      <ul className="flex flex-col p-4">
         {people.map((person) => (
           <li key={person.email} className="flex justify-between gap-x-6 py-5">
             <div className="flex min-w-0 gap-x-4">
@@ -126,3 +126,17 @@ function List() {
 }
 
 export default List
+
+
+
+
+
+{/* <li class="mb-2 flex flex-row border-gray-400">
+<div class="flex flex-1 transform cursor-pointer select-none items-center rounded-md bg-white p-4 transition duration-200 ease-in-out hover:-translate-y-1 hover:shadow">
+  <div class="mr-16 flex-1 pl-1">
+    <div class="font-medium">Company A</div>
+    <div class="text-sm text-gray-600"><a href="/" class="mb-2 mr-1 inline-block rounded-full bg-yellow-700 px-2 py-1 text-xs font-bold text-white md:mr-2 md:px-4"> COMPA </a></div>
+  </div>
+  <div class="text-red-500">↑ 3.45%</div>
+</div>
+</li> */}

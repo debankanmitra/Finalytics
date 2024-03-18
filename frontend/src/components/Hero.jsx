@@ -158,8 +158,7 @@ const Hero = () => {
                             </div>
                             <div className="ml-4 w-4/5">
                               <h5 className="text-gray-900 text-base mb-1.5 font-semibold">
-                                Analytics
-                                <span className="bg-indigo-50 text-indigo-500 text-xs font-medium mr-2 px-2.5 py-1 rounded-full h-5 ml-4">
+                                Analytics<span className="bg-indigo-50 text-indigo-500 text-xs font-medium mr-2 px-2.5 py-1 rounded-full h-5 ml-4">
                                   New
                                 </span>
                               </h5>
@@ -429,8 +428,7 @@ const Hero = () => {
             </a>
           </div>
           <h1 className="max-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">
-            Control your Finances with our
-            <span className="text-indigo-600">Smart Tool </span>
+            Control your Finances with our<span className="text-indigo-600">Smart Tool </span>
           </h1>
           <p className="max-w-sm mx-auto text-center text-base font-normal leading-7 text-gray-500 mb-9">
             Invest intelligently and discover a better way to manage your entire
