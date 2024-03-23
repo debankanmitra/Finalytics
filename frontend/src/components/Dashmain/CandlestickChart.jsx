@@ -1,57 +1,6 @@
 import { useState, useEffect } from 'react'
 import Chart from 'react-apexcharts'
 
-const candleannotations = {
-  xaxis: [
-    {
-      x: new Date(1711101600000).getTime(),
-      strokeDashArray: 0,
-      label: {
-        style: {
-          color: '#000',
-          background: '#d6c1db',
-          fontSize: '12px',
-        },
-        text: 'engulfing',
-      },
-    },
-    {
-      x: new Date(1711117800000).getTime(),
-      strokeDashArray: 0,
-      label: {
-        style: {
-          color: '#000',
-          background: '#d6c1db',
-          fontSize: '12px',
-        },
-        text: 'reverse bull',
-      },
-    },
-  ],
-};
-
-// const chartoptions = {
-//   chart: {
-//     type: 'candlestick',
-//     height: 350,
-//   },
-//   title: {
-//     text: 'CandleStick Chart',
-//     align: 'left',
-//   },
-//   xaxis: {
-//     type: 'datetime',
-//   },
-//   yaxis: {
-//     tooltip: {
-//       enabled: true,
-//     },
-//   },
-//   annotations:candleannotations,
-
-// }
-
-
 const CandlestickChart = () => {
   const [chartannotations, setAnnotations] = useState()
   const [chartData, setChartData] = useState([])
@@ -59,7 +8,6 @@ const CandlestickChart = () => {
     const fetchData = async () => {
       const response = await fetch('http://127.0.0.1:8000')
       const data = await response.json()
-      console.log('data is', data)
       setChartData(formatChartData(data))
     }
     fetchData()
@@ -76,20 +24,19 @@ const CandlestickChart = () => {
         x: new Date(item.timestamp).getTime(),
         label: {
           style: {
-            color: '#000',
-            background: '#d6c1db',
-            fontSize: '12px',
+            color: '#fff',
+            background: '#000',
+            fontSize: '8px',
+            fontWeight: 'bold',
           },
           text: item.Pattern,
         },
       }))
 
     setAnnotations({ xaxis: formattedAnnotations })
-
     return [{ data: formattedData }]
   }
-  console.log('candleannotations is', candleannotations)
-  console.log('chartannotations is', chartannotations)
+
   const chartoptions = {
     chart: {
       type: 'candlestick',
@@ -107,8 +54,7 @@ const CandlestickChart = () => {
         enabled: true,
       },
     },
-    annotations:chartannotations,
-  
+    annotations: chartannotations,
   }
 
   return (
@@ -151,18 +97,12 @@ const CandlestickChart = () => {
 
       <div>
         <div id="chartOne" className="-ml-5">
-          {/* <ReactApexChart
-						options={options}
-						series={state.series}
-						type="area"
-						height={350}
-					/> */}
           <Chart
             type="candlestick"
             height={400}
             options={chartoptions}
             series={chartData}
-            annotations={candleannotations}
+            annotations={chartoptions.annotations}
           />
         </div>
       </div>
