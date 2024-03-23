@@ -30,26 +30,26 @@ const candleannotations = {
   ],
 };
 
-const chartoptions = {
-  chart: {
-    type: 'candlestick',
-    height: 350,
-  },
-  title: {
-    text: 'CandleStick Chart',
-    align: 'left',
-  },
-  xaxis: {
-    type: 'datetime',
-  },
-  yaxis: {
-    tooltip: {
-      enabled: true,
-    },
-  },
-  annotations:candleannotations,
+// const chartoptions = {
+//   chart: {
+//     type: 'candlestick',
+//     height: 350,
+//   },
+//   title: {
+//     text: 'CandleStick Chart',
+//     align: 'left',
+//   },
+//   xaxis: {
+//     type: 'datetime',
+//   },
+//   yaxis: {
+//     tooltip: {
+//       enabled: true,
+//     },
+//   },
+//   annotations:candleannotations,
 
-}
+// }
 
 
 const CandlestickChart = () => {
@@ -90,6 +90,26 @@ const CandlestickChart = () => {
   }
   console.log('candleannotations is', candleannotations)
   console.log('chartannotations is', chartannotations)
+  const chartoptions = {
+    chart: {
+      type: 'candlestick',
+      height: 350,
+    },
+    title: {
+      text: 'CandleStick Chart',
+      align: 'left',
+    },
+    xaxis: {
+      type: 'datetime',
+    },
+    yaxis: {
+      tooltip: {
+        enabled: true,
+      },
+    },
+    annotations:chartannotations,
+  
+  }
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
