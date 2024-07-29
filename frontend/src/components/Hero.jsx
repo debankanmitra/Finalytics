@@ -1,29 +1,52 @@
+import { useState } from 'react'
+
 const Hero = () => {
+  const [isNavbarVisible, setNavbarVisible] = useState(false)
+  const [isDropdownOpen, setDropdownOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleNavbar = () => {
+    setNavbarVisible(!isNavbarVisible)
+  }
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen)
+    if (isMenuOpen) {
+      setIsMenuOpen(false)
+    }
+  }
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen)
+    if (isDropdownOpen) {
+      setDropdownOpen(false)
+    }
+  }
   return (
     <>
       <nav
-        className="py-5 border-b-default border-solid border-gray-200 z-10 w-full bg-inherit lg:fixed"
+        className="py-5 z-10 w-full bg-inherit lg:fixed"
         id="topnav"
       >
         <div className="mx-auto max-w-7xl  lg:px-8">
           <div className="w-full flex flex-col lg:flex-row">
             <div className="flex justify-between lg:hidden px-4">
-              <a href="https://www.google.com" className="flex items-center">
+              <a href="/" className="flex items-center">
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src="Logo.svg"
                   className="h-6 mr-3 sm:h-9"
-                  alt="Flowbite Logo"
+                  alt="Finalytics Logo"
                 />
                 <span className="self-center text-xl font-semibold whitespace-nowrap">
-                  Flowbite
+                  Finalytics
                 </span>
               </a>
               <button
                 data-collapse-toggle="navbar"
                 type="button"
                 className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                aria-controls="navbar-default"
-                aria-expanded="false"
+                aria-expanded={isNavbarVisible}
+                onClick={toggleNavbar}
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -42,13 +65,15 @@ const Hero = () => {
               </button>
             </div>
             <div
-              className="hidden w-full lg:flex justify-between max-lg:bg-white py-5 max-lg:mt-1 max-lg:px-4 max-lg:shadow-lg max-lg:shadow-gray-200 max-lg:h-auto max-lg:overflow-auto transition-all duration-500 delay-200 "
+              className={`${
+                isNavbarVisible ? 'block' : 'hidden'
+              } w-full lg:flex justify-between max-lg:bg-white py-5 max-lg:mt-1 max-lg:px-4 max-lg:shadow-lg max-lg:shadow-gray-200 max-lg:h-auto max-lg:overflow-auto transition-all duration-500 delay-200`}
               id="navbar"
             >
               <ul className="flex lg:items-center max-lg:gap-4 max-lg:mb-4 flex-col mt-4 lg:flex-1 md:mt-0 lg:flex-row">
                 <li>
                   <a
-                    href="https://www.google.com"
+                    href="javascript:;"
                     className="text-gray-500 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900"
                   >
                     Home
@@ -56,7 +81,7 @@ const Hero = () => {
                 </li>
                 <li>
                   <a
-                    href="https://www.google.com"
+                    href="javascript:;"
                     className="text-gray-500 text-sm font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 block lg:mr-6 lg:text-base md:mb-0 md:mr-3 hover:text-gray-900"
                   >
                     About us
@@ -65,7 +90,7 @@ const Hero = () => {
 
                 <li className="relative">
                   <button
-                    data-target="megamenu"
+                    onClick={handleMenuToggle}
                     className="dropdown-toggle flex items-center justify-between text-gray-500 text-sm lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 lg:mr-6 lg:mb-0 mr-auto lg:text-left  lg:m-0 hover:text-gray-900"
                   >
                     Products
@@ -86,11 +111,13 @@ const Hero = () => {
                       ></path>
                     </svg>
                   </button>
-                  {/* < />!-- Dropdown menu --> */}
+                  {/* <!-- Dropdown menu --> */}
                   <div
                     id="megamenu"
                     aria-labelledby="megamenu"
-                    className="animate-fade z-10 relative lg:absolute top-2 lg:top-14  lg:-left-20 bg-white rounded-lg shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] xl:p-8 lg:p-4 p-2 lg:min-w-[800px] md:min-w-[500px] min-w-full open hidden"
+                    className={`animate-fade z-10 relative lg:absolute top-2 lg:top-14 lg:-left-20 bg-white rounded-lg shadow-[0px_15px_30px_0px_rgba(16,24,40,0.1)] xl:p-8 lg:p-4 p-2 lg:min-w-[800px] md:min-w-[500px] min-w-full ${
+                      isMenuOpen ? 'block' : 'hidden'
+                    }`}
                   >
                     <div className="flex flex-col sm:flex-row lg:justify-between">
                       <ul className="text-sm text-gray-700 lg:w-1/2">
@@ -99,7 +126,7 @@ const Hero = () => {
                         </h6>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 transition-all duration-500 hover:bg-gray-50 hover:rounded-xl flex items-center"
                           >
                             <div className="bg-orange-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -134,7 +161,7 @@ const Hero = () => {
                         </li>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
                           >
                             <div className="bg-emerald-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -158,7 +185,8 @@ const Hero = () => {
                             </div>
                             <div className="ml-4 w-4/5">
                               <h5 className="text-gray-900 text-base mb-1.5 font-semibold">
-                                Analytics<span className="bg-indigo-50 text-indigo-500 text-xs font-medium mr-2 px-2.5 py-1 rounded-full h-5 ml-4">
+                                Analytics
+                                <span className="bg-indigo-50 text-indigo-500 text-xs font-medium mr-2 px-2.5 py-1 rounded-full h-5 ml-4">
                                   New
                                 </span>
                               </h5>
@@ -171,7 +199,7 @@ const Hero = () => {
                         </li>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
                           >
                             <div className="bg-blue-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -214,7 +242,7 @@ const Hero = () => {
                         </h6>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
                           >
                             <div className="bg-rose-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -249,7 +277,7 @@ const Hero = () => {
                         </li>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
                           >
                             <div className="bg-indigo-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -284,7 +312,7 @@ const Hero = () => {
                         </li>
                         <li className="">
                           <a
-                            href="https://www.google.com"
+                            href="javascript:;"
                             className="px-2 lg:px-3 py-2 lg:py-5 hover:bg-gray-50 hover:rounded-xl flex items-center transition-all duration-500"
                           >
                             <div className="bg-cyan-50 rounded-lg w-12 h-12 flex items-center justify-center">
@@ -325,7 +353,7 @@ const Hero = () => {
                   <div className="dropdown relative inline-flex">
                     <button
                       type="button"
-                      data-target="dropdown-feature"
+                      onClick={toggleDropdown}
                       className="dropdown-toggle flex items-center justify-between text-gray-500 text-sm max-lg:h-max text-center lg:text-base font-medium hover:text-prime-blue-700 transition-all duration-500 mb-2 lg:mr-6 lg:mb-0 mr-auto lg:text-left lg:m-0 hover:text-gray-900"
                     >
                       Features
@@ -348,14 +376,16 @@ const Hero = () => {
                     </button>
                     <div
                       id="dropdown-feature"
-                      className="dropdown-menu rounded-xl shadow-lg lg:bg-white relative lg:absolute max-lg:-left-14 max-lg:top-2 max-lg:bg-white lg:top-full lg:w-72 mt-2 hidden"
+                      className={`dropdown-menu rounded-xl shadow-lg lg:bg-white relative lg:absolute max-lg:-left-14 max-lg:top-2 max-lg:bg-white lg:top-full lg:w-72 mt-2 ${
+                        isDropdownOpen ? '' : 'hidden'
+                      }`}
                       aria-labelledby="dropdown-feature"
                     >
                       <ul className="py-2">
                         <li>
                           <a
                             className="block px-6 py-2 hover:bg-gray-100 text-gray-900 font-medium"
-                            href="https://www.google.com"
+                            href="#"
                           >
                             Downloads
                           </a>
@@ -363,7 +393,7 @@ const Hero = () => {
                         <li>
                           <a
                             className="block px-6 py-2 hover:bg-gray-100 text-gray-900 font-medium"
-                            href="https://www.google.com"
+                            href="#"
                           >
                             Saved Files
                           </a>
@@ -371,7 +401,7 @@ const Hero = () => {
                         <li>
                           <a
                             className="block px-6 py-2 hover:bg-gray-100 text-gray-900 font-medium"
-                            href="https://www.google.com"
+                            href="#"
                           >
                             Notifications
                           </a>
@@ -381,12 +411,15 @@ const Hero = () => {
                   </div>
                 </li>
               </ul>
-              <a href="https://www.google.com" className="hidden lg:flex items-center border border-red-500">
+              <a href="/" className="hidden lg:flex items-center">
                 <img
-                  src="https://pagedone.io/asset/uploads/1691055810.png"
-                  alt="logo"
-                  className="w-12 h-12 rounded-full"
+                  src="Logo.svg"
+                  className="h-6 mr-3 sm:h-9"
+                  alt="Finalytics Logo"
                 />
+                <span className="self-center text-xl font-semibold whitespace-nowrap">
+                  Finalytics
+                </span>
               </a>
               <div className="flex lg:items-center justify-start flex-col lg:flex-row max-lg:gap-4 lg:flex-1 lg:justify-end">
                 <button className="bg-indigo-50 text-indigo-600 rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 py-3 px-6 text-sm hover:bg-indigo-100">
@@ -400,42 +433,18 @@ const Hero = () => {
           </div>
         </div>
       </nav>
-      <section className="pt-8 lg:pt-32 bg-[url('https://pagedone.io/asset/uploads/1691055810.png')] bg-center bg-cover">
+      <section className="pt-8 lg:pt-32 bg-[url('https://pagedone.io/asset/uploads/1691055810.png')] bg-center bg-cover w-11/12 mx-auto rounded-3xl drop-shadow-2xl">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative text-center">
-          <div className="border border-indigo-600 p-1 w-60 mx-auto rounded-full flex items-center justify-between mb-4">
-            <span className="font-inter text-xs font-medium text-gray-900 ml-3">
-              Explore how to use for brands.
-            </span>
-            <a
-              href="https://www.google.com"
-              className="w-8 h-8 rounded-full flex justify-center items-center bg-indigo-600"
-            >
-              <svg
-                width="17"
-                height="16"
-                viewBox="0 0 17 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M2.83398 8.00019L12.9081 8.00019M9.75991 11.778L13.0925 8.44541C13.3023 8.23553 13.4073 8.13059 13.4073 8.00019C13.4073 7.86979 13.3023 7.76485 13.0925 7.55497L9.75991 4.22241"
-                  stroke="white"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
           <h1 className="max-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">
-            Control your Finances with our<span className="text-indigo-600">Smart Tool </span>
+            Control your Finances with our
+            <span className="text-indigo-600">Smart Tool </span>
           </h1>
           <p className="max-w-sm mx-auto text-center text-base font-normal leading-7 text-gray-500 mb-9">
             Invest intelligently and discover a better way to manage your entire
             wealth easily.
           </p>
           <a
-            href="https://www.google.com"
+            href="javascript:;"
             className="w-full md:w-auto mb-14 inline-flex items-center justify-center py-3 px-7 text-base font-semibold text-center text-white rounded-full bg-indigo-600 shadow-xs hover:bg-indigo-700 transition-all duration-500"
           >
             Create an account
@@ -458,8 +467,9 @@ const Hero = () => {
           </a>
           <div className="flex justify-center">
             <img
-              src="https://pagedone.io/asset/uploads/1691054543.png"
-              alt="Dashboard"
+              src="pagedone.png"
+              alt="Dashboard image"
+              className="rounded-t-3xl"
             />
           </div>
         </div>

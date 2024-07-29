@@ -5,7 +5,7 @@ import Loader from './components/Loader'
 import PageTitle from './components/PageTitle'
 import ECommerce from './pages/ECommerce'
 import Home from './pages/Home'
-import CryptoTable from './components/CryptoTable'
+// import CryptoTable from './components/CryptoTable'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -24,7 +24,7 @@ function App() {
   ) : (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/table" element={<CryptoTable />} />
+      {/* <Route path="/table" element={<CryptoTable />} /> */}
       <Route
         path="/dashboard"
         index
