@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const PageTitle = ({ title }) => {
-	const location = useLocation();
+  const location = useLocation()
 
-	useEffect(() => {
-		document.title = title;
-	}, [location, title]);
+  useEffect(() => {
+    document.title = title
+  }, [location, title])
 
-	return null; // This component doesn't render anything
-};
+  return null // This component doesn't render anything
+}
 
 PageTitle.propTypes = {
-	title: PropTypes.string.isRequired,
-};
+  title: PropTypes.string.isRequired,
+}
 
-export default PageTitle;
+export default PageTitle

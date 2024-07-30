@@ -57,7 +57,9 @@ function List() {
   return (
     <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-8 lg:pt-32">
       <header className="flex h-16 flex-none items-center border-t px-4">
-        <h1 className="ax-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">Trending Coins</h1>
+        <h1 className="ax-w-2xl mx-auto text-center font-manrope font-bold text-4xl text-gray-900 mb-5 md:text-5xl leading-[50px]">
+          Trending Coins
+        </h1>
       </header>
       <header className="flex flex-none items-center px-4">
         <a
@@ -127,11 +129,8 @@ function List() {
 
 export default List
 
-
-
-
-
-{/* <li class="mb-2 flex flex-row border-gray-400">
+{
+  /* <li class="mb-2 flex flex-row border-gray-400">
 <div class="flex flex-1 transform cursor-pointer select-none items-center rounded-md bg-white p-4 transition duration-200 ease-in-out hover:-translate-y-1 hover:shadow">
   <div class="mr-16 flex-1 pl-1">
     <div class="font-medium">Company A</div>
@@ -139,4 +138,5 @@ export default List
   </div>
   <div class="text-red-500">↑ 3.45%</div>
 </div>
-</li> */}
+</li> */
+}

@@ -24,10 +24,7 @@ const Hero = () => {
   }
   return (
     <>
-      <nav
-        className="py-5 z-10 w-full bg-inherit lg:fixed"
-        id="topnav"
-      >
+      <nav className="py-5 z-10 w-full bg-inherit lg:fixed" id="topnav">
         <div className="mx-auto max-w-7xl  lg:px-8">
           <div className="w-full flex flex-col lg:flex-row">
             <div className="flex justify-between lg:hidden px-4">
