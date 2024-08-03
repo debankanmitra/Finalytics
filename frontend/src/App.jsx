@@ -26,7 +26,7 @@ function App() {
       <Route path="/" element={<Home />} />
       {/* <Route path="/table" element={<CryptoTable />} /> */}
       <Route
-        path="/dashboard"
+        path="/dashboard/:id"
         index
         element={
           <>

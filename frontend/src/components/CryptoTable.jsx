@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function CryptoTable() {
   const [chartData, setChartData] = useState([])
+  const navigate = useNavigate()
+
+  const handleRowClick = (id) => {
+    navigate(`/dashboard/${id}`)
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://127.0.0.1:8000/allcoins')
@@ -79,6 +86,7 @@ function CryptoTable() {
                   <tbody
                     className="border-b border-zinc-200 hover:bg-zinc-200 cursor-pointer"
                     key={index}
+                    onClick={() => handleRowClick(item.id)}
                   >
                     <tr>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-800">
@@ -102,7 +110,13 @@ function CryptoTable() {
                       <span className="text-green-500">+3.45%</span>
                     </td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                        <span className={item.price_change_percentage_24h < 0 ? "text-red-500" : "text-green-500"}>
+                        <span
+                          className={
+                            item.price_change_percentage_24h < 0
+                              ? 'text-red-500'
+                              : 'text-green-500'
+                          }
+                        >
                           {item.price_change_percentage_24h}%
                         </span>
                       </td>

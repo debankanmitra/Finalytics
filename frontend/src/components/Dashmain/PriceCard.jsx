@@ -10,7 +10,7 @@ const PriceCard = ({ title, total, rate, levelUp, levelDown, children }) => {
       <div>
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
-            {total}
+            {total.toFixed(2)}
           </h4>
         </div>
         <div className="flex items-center justify-between">
@@ -20,7 +20,7 @@ const PriceCard = ({ title, total, rate, levelUp, levelDown, children }) => {
               levelUp && 'text-meta-3'
             } ${levelDown && 'text-red-500'} `}
           >
-            {rate}
+            {rate.toFixed(2)}%
 
             {levelUp && (
               <svg

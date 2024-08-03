@@ -33,7 +33,11 @@ function Newsfeed() {
               <span className="text-indigo-600 font-medium mb-3 block">
                 {item.publishedAt}
               </span>
-              <a href={item.url} target='_blank' className="text-xl text-gray-900 font-medium leading-8 mb-4 group-hover:text-indigo-600 cursor-pointer">
+              <a
+                href={item.url}
+                target="_blank"
+                className="text-xl text-gray-900 font-medium leading-8 mb-4 group-hover:text-indigo-600 cursor-pointer"
+              >
                 {item.title}
               </a>
               <p className="text-gray-500 leading-6 transition-all duration-500 mb-8">
@@ -41,7 +45,7 @@ function Newsfeed() {
               </p>
               <a
                 href={item.url}
-                target='_blank'
+                target="_blank"
                 className="cursor-pointer flex items-center gap-2 text-lg text-indigo-700 font-semibold"
               >
                 Read more
